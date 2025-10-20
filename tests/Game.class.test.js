@@ -3,6 +3,8 @@
 
 const Game = require('../src/modules/Game.class');
 
+// const game = new Game();
+
 function sum(game) {
   let result = 0;
 
