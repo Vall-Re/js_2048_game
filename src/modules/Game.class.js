@@ -82,20 +82,21 @@ class Game {
   start() {
     if (this.#status === 'idle' || this.#status === 'lose') {
       this.#board = JSON.parse(JSON.stringify(this.#initialState));
-      this.#addRandomTitle();
-      this.#addRandomTitle();
+      this.#addRandomTile();
+      this.#addRandomTile();
       this.#score = 0;
       this.#status = 'playing';
     }
   }
-
   /**
    * Resets the game.
    */
   restart() {
     this.#board = JSON.parse(JSON.stringify(this.#initialState));
     this.#score = 0;
-    this.#status = 'idle';
+    this.#status = 'playing';
+    this.#addRandomTile();
+    this.#addRandomTile();
   }
 
   // Add your own methods here
@@ -104,7 +105,7 @@ class Game {
     return Array.from({ length: 4 }, () => Array(4).fill(0));
   }
 
-  #addRandomTitle() {
+  #addRandomTile() {
     const emptyCell = [];
 
     for (let r = 0; r < 4; r++) {
@@ -207,8 +208,9 @@ class Game {
       this.#checkWin();
 
       if (this.#status !== 'win') {
-        this.#addRandomTitle();
+        this.#addRandomTile();
       }
+
       this.#checkLose();
     }
   }

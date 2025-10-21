@@ -32,17 +32,17 @@ function renderBoard() {
 
   scoreElement.textContent = game.getScore();
 
-  const statusGame = game.getStatus();
-
   messageStart.classList.add('hidden');
   messageWin.classList.add('hidden');
   messageLose.classList.add('hidden');
 
-  if (statusGame === 'win') {
-    messageWin.classList.remove('hidden');
-  }
+  const statusGame = game.getStatus();
 
-  if (statusGame === 'lose') {
+  if (statusGame === 'idle') {
+    messageStart.classList.remove('hidden');
+  } else if (statusGame === 'win') {
+    messageWin.classList.remove('hidden');
+  } else if (statusGame === 'lose') {
     messageLose.classList.remove('hidden');
   }
 }
